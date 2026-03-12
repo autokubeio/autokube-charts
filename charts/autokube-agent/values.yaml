@@ -8,7 +8,7 @@ token: ""
 
 image:
   repository: ghcr.io/autokubeio/autokube-agent
-  tag: "latest"
+  tag: "0.0.1"
   pullPolicy: IfNotPresent
 
 # -- Number of replicas (1 is sufficient; the agent is stateless)
