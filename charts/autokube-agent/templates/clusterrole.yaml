@@ -1,0 +1,150 @@
+{{- if .Values.rbac.create }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "autokube-agent.fullname" . }}
+  labels:
+    {{- include "autokube-agent.labels" . | nindent 4 }}
+rules:
+  # ── Core API resources ──────────────────────────────────────────────
+  - apiGroups: [""]
+    resources:
+      - namespaces
+      - pods
+      - pods/log
+      - services
+      - endpoints
+      - configmaps
+      - secrets
+      - persistentvolumeclaims
+      - persistentvolumes
+      - nodes
+      - events
+      - replicationcontrollers
+      - serviceaccounts
+      - resourcequotas
+      - limitranges
+    verbs: ["get", "list", "watch"]
+
+  # ── Apps API ────────────────────────────────────────────────────────
+  - apiGroups: ["apps"]
+    resources:
+      - deployments
+      - daemonsets
+      - replicasets
+      - statefulsets
+    verbs: ["get", "list", "watch"]
+
+  # ── Batch API ───────────────────────────────────────────────────────
+  - apiGroups: ["batch"]
+    resources:
+      - jobs
+      - cronjobs
+    verbs: ["get", "list", "watch"]
+
+  # ── Networking ──────────────────────────────────────────────────────
+  - apiGroups: ["networking.k8s.io"]
+    resources:
+      - ingresses
+      - ingressclasses
+      - networkpolicies
+    verbs: ["get", "list", "watch"]
+
+  # ── RBAC ────────────────────────────────────────────────────────────
+  - apiGroups: ["rbac.authorization.k8s.io"]
+    resources:
+      - clusterroles
+      - clusterrolebindings
+      - roles
+      - rolebindings
+    verbs: ["get", "list", "watch"]
+
+  # ── Autoscaling ────────────────────────────────────────────────────
+  - apiGroups: ["autoscaling"]
+    resources:
+      - horizontalpodautoscalers
+    verbs: ["get", "list", "watch"]
+
+  # ── Storage ─────────────────────────────────────────────────────────
+  - apiGroups: ["storage.k8s.io"]
+    resources:
+      - storageclasses
+    verbs: ["get", "list", "watch"]
+
+  # ── Discovery (endpoint slices) ────────────────────────────────────
+  - apiGroups: ["discovery.k8s.io"]
+    resources:
+      - endpointslices
+    verbs: ["get", "list", "watch"]
+
+  # ── Metrics (for HPA / dashboard) ──────────────────────────────────
+  - apiGroups: ["metrics.k8s.io"]
+    resources:
+      - nodes
+      - pods
+    verbs: ["get", "list"]
+
+  # ── Custom Resources (discovery) ───────────────────────────────────
+  - apiGroups: ["apiextensions.k8s.io"]
+    resources:
+      - customresourcedefinitions
+    verbs: ["get", "list", "watch"]
+
+  # ── Wildcard for CRD instances (read-only) ─────────────────────────
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs: ["get", "list", "watch"]
+
+  # ── Write operations (scale, restart, delete) ──────────────────────
+  - apiGroups: ["apps"]
+    resources:
+      - deployments/scale
+      - statefulsets/scale
+      - replicasets/scale
+      - daemonsets
+    verbs: ["patch", "update"]
+
+  - apiGroups: ["apps"]
+    resources:
+      - deployments
+      - statefulsets
+      - daemonsets
+      - replicasets
+    verbs: ["patch", "delete"]
+
+  - apiGroups: [""]
+    resources:
+      - pods
+      - pods/eviction
+      - services
+      - configmaps
+      - secrets
+      - persistentvolumeclaims
+      - namespaces
+    verbs: ["create", "patch", "update", "delete"]
+
+  - apiGroups: ["batch"]
+    resources:
+      - jobs
+      - cronjobs
+    verbs: ["create", "patch", "update", "delete"]
+
+  - apiGroups: ["networking.k8s.io"]
+    resources:
+      - ingresses
+      - networkpolicies
+    verbs: ["create", "patch", "update", "delete"]
+
+  - apiGroups: ["autoscaling"]
+    resources:
+      - horizontalpodautoscalers
+    verbs: ["create", "patch", "update", "delete"]
+
+  # ── Exec into pods ─────────────────────────────────────────────────
+  - apiGroups: [""]
+    resources:
+      - pods/exec
+      - pods/attach
+      - pods/portforward
+    verbs: ["create", "get"]
+{{- end }}

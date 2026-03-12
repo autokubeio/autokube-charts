@@ -1,0 +1,60 @@
+# AutoKube Agent Helm Values
+
+# -- AutoKube dashboard URL (required)
+url: ""
+
+# -- Agent authentication token (required)
+token: ""
+
+image:
+  repository: ghcr.io/autokubeio/autokube-agent
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+# -- Number of replicas (1 is sufficient; the agent is stateless)
+replicaCount: 1
+
+# -- ServiceAccount configuration
+serviceAccount:
+  create: true
+  name: autokube-agent
+  annotations: {}
+
+# -- RBAC — grants cluster-wide read access to all resources
+rbac:
+  create: true
+  namespaceExec:
+    # -- Create namespace-scoped Role/RoleBinding resources for pod exec access
+    create: true
+    # -- Namespaces where the agent should be granted pods/exec access
+    namespaces: ["default","kube-system"]
+
+# -- Pod resource limits
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 200m
+    memory: 128Mi
+
+# -- Node selector
+nodeSelector: {}
+
+# -- Tolerations
+tolerations: []
+
+# -- Affinity rules
+affinity: {}
+
+# -- Extra environment variables
+extraEnv: []
+
+# -- Pod annotations
+podAnnotations: {}
+
+# -- Pod labels
+podLabels: {}
+
+# -- Image pull secrets
+imagePullSecrets: []
