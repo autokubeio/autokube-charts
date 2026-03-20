@@ -2,7 +2,7 @@ apiVersion: v2
 name: autokube
 description: AutoKube — Kubernetes dashboard with AI-powered management
 type: application
-version: "0.0.1"
+version: "0.0.2"
 appVersion: "0.0.2"
 home: https://autokube.io
 sources:
