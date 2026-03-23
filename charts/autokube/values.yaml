@@ -2,7 +2,7 @@
 
 image:
   repository: ghcr.io/autokubeio/autokube
-  tag: "0.0.3"
+  tag: "1.0.0"
   pullPolicy: IfNotPresent
 
 replicaCount: 1
