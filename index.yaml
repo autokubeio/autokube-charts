@@ -2,6 +2,29 @@ apiVersion: v1
 entries:
   autokube:
   - apiVersion: v2
+    appVersion: 1.0.1
+    created: "2026-03-25T13:16:10.723360122Z"
+    description: AutoKube — Kubernetes dashboard with AI-powered management
+    digest: b17bdb9967713c2371bd5b701425f93ebaf9d390ec7be0662e965f24c2a936fd
+    home: https://autokube.io
+    icon: https://autokube.io/icon.png
+    keywords:
+    - kubernetes
+    - autokube
+    - dashboard
+    - monitoring
+    - management
+    maintainers:
+    - name: AutoKube
+      url: https://autokube.io
+    name: autokube
+    sources:
+    - https://github.com/autokubeio/autokube
+    type: application
+    urls:
+    - https://github.com/autokubeio/autokube-charts/releases/download/autokube-1.0.1/autokube-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
     appVersion: 1.0.0
     created: "2026-03-23T15:54:54.883407256Z"
     description: AutoKube — Kubernetes dashboard with AI-powered management
@@ -117,4 +140,4 @@ entries:
     urls:
     - https://github.com/autokubeio/autokube-charts/releases/download/autokube-agent-0.0.1/autokube-agent-0.0.1.tgz
     version: 0.0.1
-generated: "2026-03-23T15:54:54.883423346Z"
+generated: "2026-03-25T13:16:10.723379148Z"
