@@ -118,6 +118,29 @@ entries:
     version: 0.0.1
   autokube-agent:
   - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-03-26T12:05:39.751314767Z"
+    description: AutoKube in-cluster agent — connects your Kubernetes cluster to AutoKube
+      dashboard
+    digest: 6029dd60e1f9c055f63d052f4411d7a46c9db7ed0e72733b2ea184a80852329a
+    home: https://autokube.io
+    icon: https://autokube.io/icon.png
+    keywords:
+    - kubernetes
+    - autokube
+    - agent
+    - monitoring
+    maintainers:
+    - name: AutoKube
+      url: https://autokube.io
+    name: autokube-agent
+    sources:
+    - https://github.com/autokubeio/autokube-agent
+    type: application
+    urls:
+    - https://github.com/autokubeio/autokube-charts/releases/download/autokube-agent-1.0.0/autokube-agent-1.0.0.tgz
+    version: 1.0.0
+  - apiVersion: v2
     appVersion: 0.0.1
     created: "2026-03-11T15:00:00.606221687Z"
     description: AutoKube in-cluster agent — connects your Kubernetes cluster to AutoKube
@@ -140,4 +163,4 @@ entries:
     urls:
     - https://github.com/autokubeio/autokube-charts/releases/download/autokube-agent-0.0.1/autokube-agent-0.0.1.tgz
     version: 0.0.1
-generated: "2026-03-25T13:16:10.723379148Z"
+generated: "2026-03-26T12:05:39.751331137Z"
