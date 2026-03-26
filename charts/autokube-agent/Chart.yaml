@@ -2,8 +2,8 @@ apiVersion: v2
 name: autokube-agent
 description: AutoKube in-cluster agent — connects your Kubernetes cluster to AutoKube dashboard
 type: application
-version: "0.0.1"
-appVersion: "0.0.1"
+version: "1.0.0"
+appVersion: "1.0.0"
 home: https://autokube.io
 sources:
   - https://github.com/autokubeio/autokube-agent
