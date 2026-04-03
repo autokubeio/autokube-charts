@@ -38,3 +38,12 @@ ServiceAccount name
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+PersistentVolumeClaim name
+*/}}
+{{- define "autokube.persistentVolumeClaimName" -}}
+{{- if .Values.persistence.enabled }}
+{{- printf "%s-%s" (include "autokube.fullname" .) "data" }}
+{{- end }}
+{{- end }}

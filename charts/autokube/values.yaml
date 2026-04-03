@@ -1,7 +1,7 @@
 # AutoKube Dashboard Helm Values
 
 image:
-  repository: ghcr.io/autokubeio/autokube
+  repository: autokubeio/autokube
   tag: "1.1.0"
   pullPolicy: IfNotPresent
 
@@ -9,7 +9,7 @@ replicaCount: 1
 
 service:
   type: ClusterIP
-  port: 5173
+  port: 8080
 
 ingress:
   enabled: false
@@ -34,6 +34,11 @@ serviceAccount:
   create: true
   name: autokube
   annotations: {}
+
+persistence:
+  enabled: false
+  storageClass: ""
+  volumeSize: 2Gi
 
 nodeSelector: {}
 tolerations: []
