@@ -68,6 +68,7 @@ helm install autokube-agent autokube/autokube-agent \
 | `service.port` | Service port | `5173` |
 | `ingress.enabled` | Enable ingress | `false` |
 | `serviceAccount.create` | Create ServiceAccount | `true` |
+| `persistence.enabled` | Use a PersistentVolume to store AutoKube data | `false` |
 
 ## Development
 
